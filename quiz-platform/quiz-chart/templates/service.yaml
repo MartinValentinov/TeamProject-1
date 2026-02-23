@@ -1,11 +1,16 @@
+{{- range $key, $service := .Values }}
+{{- if (hasKey $service "name") }}
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.name }}
+  name: {{ $service.name }}
 spec:
   selector:
-    app: {{ .Values.service.name }}
+    app: {{ $service.name }}
   ports:
-    - port: 80
-      targetPort: {{ .Values.service.port }}
-  type: ClusterIP
+    - protocol: TCP
+      port: {{ $service.port }}
+      targetPort: {{ $service.port }}
+{{- end }}
+{{- end }}

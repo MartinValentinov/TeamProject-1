@@ -1,20 +1,25 @@
+{{- range $key, $service := .Values }}
+{{- if (hasKey $service "name") }}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}
+  name: {{ $service.name }}
 spec:
-  replicas: {{ .Values.service.replicas }}
+  replicas: {{ $service.replicas | default 1 }}
   selector:
     matchLabels:
-      app: {{ .Values.service.name }}
+      app: {{ $service.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.service.name }}
+        app: {{ $service.name }}
     spec:
       containers:
-        - name: {{ .Values.service.name }}
-          image: {{ .Values.service.image }}
-          imagePullPolicy: {{ .Values.global.imagePullPolicy }}
+        - name: {{ $service.name }}
+          image: {{ $service.image }}
+          imagePullPolicy: {{ $.Values.global.imagePullPolicy }}
           ports:
-            - containerPort: {{ .Values.service.port }}
+            - containerPort: {{ $service.port }}
+{{- end }}
+{{- end }}
