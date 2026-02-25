@@ -50,7 +50,7 @@ def jwt_required(f):
     return decorated
 
 
-@app.route("/api/v1.0/register", methods=["POST"])
+@app.route("/api/users/v1.0/register", methods=["POST"])
 def register():
     """
     Expected JSON body:
@@ -87,7 +87,7 @@ def register():
     return jsonify({"message": f"User '{username}' registered successfully"}), 201
 
 
-@app.route("/api/v1.0/login", methods=["POST"])
+@app.route("/api/users/v1.0/login", methods=["POST"])
 def login():
     """
     Expected JSON body:
@@ -114,14 +114,14 @@ def login():
     return jsonify({"message": f"Welcome back, {username}!", "token": token}), 200
 
 
-@app.route("/api/v1.0/logout", methods=["POST"])
+@app.route("/api/users/v1.0/logout", methods=["POST"])
 @jwt_required
 def logout():
     username = request.current_user["username"]
     return jsonify({"message": f"User '{username}' logged out successfully — discard your token"}), 200
 
 
-@app.route("/api/v1.0/me", methods=["GET"])
+@app.route("/api/users/v1.0/me", methods=["GET"])
 @jwt_required
 def me():
     user = request.current_user

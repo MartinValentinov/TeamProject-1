@@ -23,8 +23,16 @@
 hs_err_pid*
 replay_pid*
 
+<<<<<<< HEAD:.gitignore
 # Enviroment variable file
 .env
 
 # Pycache
 **/__pycache__/
+=======
+
+.env
+.vscode/
+.idea/
+*.iml
+>>>>>>> 311adc29691fa816f871fdd0758ac00ad9761312:quiz-platform/.gitignore
