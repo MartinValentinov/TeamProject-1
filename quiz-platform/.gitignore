@@ -35,4 +35,11 @@ replay_pid*
 .vscode/
 .idea/
 *.iml
->>>>>>> 311adc29691fa816f871fdd0758ac00ad9761312:quiz-platform/.gitignore
+db_secret.yaml
+*secret.*
+*secret*
+.env.*
+deploy.sh
+*.bak
+*.sql
+.vscode/
