@@ -67,6 +67,7 @@
 
 * Python
 * Flask
+* SQLAlchemy
 
 ### Database
 
@@ -83,6 +84,10 @@
 
 ### Version Control
 
+* Git
+
+### Project management
+
 * GitHub
 
 ---
@@ -97,39 +102,7 @@
 | `quiz_db`   | quiz-service   | Въпроси и отговори |
 | `result_db` | result-service | Резултати          |
 
----
-
-##  Структура на таблиците
-
-### users
-
-* id
-* username
-* email
-* hashed_password
-* created_at
-
-###  questions
-
-* id
-* subject
-* condition
-
-###  options
-
-* id
-* question_id
-* option_text
-* is_correct
-
-### results
-
-* id
-* user_id
-* subject
-* score
-* total_questions
-* created_at
+За по-детайлна информация, виж `./docs` папката
 
 ---
 
@@ -141,7 +114,7 @@
 * Изолирана user база данни за повишена сигурност
 
 ---
-
+<!--
 ##  Причини за използване на микросървиси
 
 ✔ Независимо мащабиране на услугите
@@ -150,8 +123,8 @@
 ✔ Разделяне на отговорностите в екипа
 ✔ По-добра сигурност чрез изолация
 ✔ Подходящо за cloud-native среда
-
 ---
+-->
 
 ##  Kubernetes ресурси
 
@@ -166,7 +139,7 @@
 
 ##  Данни за въпросите
 
-Общ брой въпроси: **179**
+Към момента има **179** въпроса.
 
 | Предмет     | Брой |
 | ----------- | ---- |
@@ -188,20 +161,6 @@
 ---
 
 ##  Стартиране на проекта (примерно)
-
-```bash
-# Build images
-docker build -t user-service .
-docker build -t quiz-service .
-docker build -t result-service .
-
-# Start Kubernetes cluster
-minikube start
-
-# Deploy services
-kubectl apply -f k8s/
-```
-
 ---
 
 ##  Бъдещи подобрения
@@ -222,7 +181,7 @@ kubectl apply -f k8s/
 
 ---
 
-
+<!--
 # Council Of Ministers
 
 ## Project Overview
@@ -385,3 +344,4 @@ GET /api/v1/results/{user_id}
 ```
 result(id, user_id, score, timestamp)
 ```
+-->
