@@ -17,6 +17,7 @@ def create_app():
     with app.app_context():
         import time
         import sqlalchemy
+        from db import models
         for attempt in range(10):
             try:
                 db.create_all()
